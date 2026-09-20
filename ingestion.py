@@ -31,6 +31,7 @@ def chunk_text(text, source_kb, filename, chunk_size=500, overlap=100):
     return result
 
 all_chunks = []
+
 #Scan Folder & dapatkan nama KB
 for source_kb in Path("data").iterdir():
         if source_kb.is_dir():
