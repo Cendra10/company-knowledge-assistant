@@ -5,7 +5,6 @@ from zipfile import BadZipFile
 from fastapi import HTTPException
 from docx.opc.exceptions import PackageNotFoundError
 
-#Extract text dari file
 def extract_text_from_docx(contents):
     docx_list = []
     try:
@@ -32,7 +31,6 @@ def chunk_text(text, source_kb, filename, chunk_size=500, overlap=100):
 
 all_chunks = []
 
-#Scan Folder & dapatkan nama KB
 for source_kb in Path("data").iterdir():
         if source_kb.is_dir():
             for file in source_kb.iterdir():
