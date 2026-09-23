@@ -30,12 +30,14 @@ def chunk_text(text, source_kb, filename, chunk_size=500, overlap=100):
     return result
 
 all_chunks = []
-
+from embeddings import get_chroma_collection, save_to_chroma
+collection = get_chroma_collection()
 for source_kb in Path("data").iterdir():
-        if source_kb.is_dir():
+      if source_kb.is_dir():
             for file in source_kb.iterdir():
                 print (source_kb.name, file.name)
                 text = extract_text_from_docx(file.read_bytes())
                 chunks = chunk_text(text, source_kb.name, file.name)
                 all_chunks.extend(chunks)
+                save_to_chroma(collection, chunks, source_kb.name)
                 print(all_chunks)

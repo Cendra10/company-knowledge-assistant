@@ -1,5 +1,4 @@
 import chromadb
-from ingestion import all_chunks
 
 def get_chroma_collection():
     client = chromadb.PersistentClient(path="chroma_db")
