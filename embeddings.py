@@ -15,8 +15,3 @@ def save_to_chroma(collection, chunks, source_name):
         ids=ids,
         metadatas=[{"source": source_name} for _ in chunks]
     )
-
-if __name__ == "__main__":
-    collection = get_chroma_collection()
-    save_to_chroma(collection, all_chunks, "engineering")
-    print("Saved:", collection.count())
