@@ -16,5 +16,5 @@ def ingest_endpoint():
 def ask_endpoint(request: AskRequest):
     collection = get_chroma_collection()
     answer = retrieve_chunks(collection, request.question, source_kb=request.source_kb)
-    return AskResponse(answer=answer)
-    
+    full_text = ",".join(answer)
+    return AskResponse(answer=full_text)
