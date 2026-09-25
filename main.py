@@ -15,6 +15,6 @@ def ingest_endpoint():
 @app.post("/ask")
 def ask_endpoint(request: AskRequest):
     collection = get_chroma_collection()
-    answer = retrieve_chunks(collection, request.question, source_kb=request.source_kb)
-    full_text = ",".join(answer)
+    documents, metadatas = retrieve_chunks(collection, request.question, source_kb=request.source_kb)
+    full_text = ",".join(documents)
     return AskResponse(answer=full_text)
