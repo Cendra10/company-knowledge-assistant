@@ -17,4 +17,4 @@ def ask_endpoint(request: AskRequest):
     collection = get_chroma_collection()
     documents, metadatas = retrieve_chunks(collection, request.question, source_kb=request.source_kb)
     full_text = ",".join(documents)
-    return AskResponse(answer=full_text)
+    return AskResponse(answer=full_text, citation=metadatas)
