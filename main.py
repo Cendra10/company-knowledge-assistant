@@ -3,6 +3,7 @@ from schemas import AskRequest, AskResponse
 from ingestion import ingest
 from embeddings import get_chroma_collection
 from rag import retrieve_chunks
+from llm import ask_question
 
 app = FastAPI()
 
@@ -16,5 +17,5 @@ def ingest_endpoint():
 def ask_endpoint(request: AskRequest):
     collection = get_chroma_collection()
     documents, metadatas = retrieve_chunks(collection, request.question, source_kb=request.source_kb)
-    full_text = ",".join(documents)
-    return AskResponse(answer=full_text, citation=metadatas)
+    answer = ask_question(documents, request.question)
+    return AskResponse(answer=answer, citation=metadatas)
