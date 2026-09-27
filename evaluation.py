@@ -1,0 +1,21 @@
+from rag import retrieve_chunks
+from embeddings import get_chroma_collection
+from llm import ask_question
+
+test_cases = [
+    {"question": "berapa lama sebelum mengajukan cuti?", "expected_keyword": "4 bulan", "source_kb": "engineering"},
+    {"question": "apa isi dokumen HR?", "expected_keyword": "dummy", "source_kb": "hr"}
+]
+
+collection = get_chroma_collection()
+
+for case in test_cases:
+    documents, metadatas = retrieve_chunks(collection, case["question"],source_kb=case["source_kb"])
+    answer = ask_question(documents, case["question"])
+
+    print(repr(answer))
+
+    if case["expected_keyword"] in answer:
+        print("lulus:", case["question"])
+    else:
+        print("gagal:", case["question"], "-> jawaban:", answer)
