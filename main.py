@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.post("/ingest")
 def ingest_endpoint():
-    all_chunks, collection = ingest()
+    all_chunks = ingest()
     return{"message": "Ingestion complete",
            "total_chunks": len(all_chunks)}
 

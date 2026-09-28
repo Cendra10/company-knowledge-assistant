@@ -41,8 +41,8 @@ def ingest():
                     chunks = chunk_text(text, source_kb.name, file.name)
                     all_chunks.extend(chunks)
                     save_to_chroma(collection, chunks, source_kb.name)
-    return all_chunks, collection
+    return all_chunks
 
 if __name__ == "__main__":
-    chunks, collection = ingest()
+    chunks = ingest()
     print("Total chunks:", len(chunks))
