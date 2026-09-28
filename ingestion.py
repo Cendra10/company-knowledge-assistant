@@ -40,7 +40,7 @@ def ingest():
                     text = extract_text_from_docx(file.read_bytes())
                     chunks = chunk_text(text, source_kb.name, file.name)
                     all_chunks.extend(chunks)
-                    save_to_chroma(collection, chunks, source_kb.name)
+                    save_to_chroma(collection, chunks, source_kb.name, file.name)
     return all_chunks
 
 if __name__ == "__main__":

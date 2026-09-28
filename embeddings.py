@@ -5,13 +5,21 @@ def get_chroma_collection():
     collection = client.get_or_create_collection(name="my_collection")
     return collection
 
-def save_to_chroma(collection, chunks, source_name):
-    collection.delete(where={"source": source_name})
+def save_to_chroma(collection, chunks, source_name, file_name):
+    collection.delete(
+        where={
+            "$and":[
+                {"source": source_name},
+                {"filename": file_name}
+                ]})
 
-    ids = [f"{source_name}_{i}"
+    ids = [f"{source_name}_{file_name}_{i}"
            for i in range(len(chunks))]
     collection.add(
         documents=[chunk["text"] for chunk in chunks],
         ids=ids,
-        metadatas=[{"source": source_name} for _ in chunks]
+        metadatas=[{"source": source_name, "filename": file_name} for _ in chunks]
     )
+
+collection = get_chroma_collection()
+print(collection.get())
