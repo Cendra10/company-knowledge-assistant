@@ -22,6 +22,7 @@ def build_context(chunks):
 
 def ask_question(metadata, question):
     context=build_context(metadata)
+    print(f"CONTEXT: {context}")
 
     prompt = [
         {"role": "system", "content": "Jawab HANYA berdasarkan context dan menjawab singkat menggunakan Bahasa Indonesia."}

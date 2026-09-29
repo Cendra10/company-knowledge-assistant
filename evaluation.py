@@ -4,7 +4,8 @@ from llm import ask_question
 
 test_cases = [
     {"question": "berapa lama sebelum mengajukan cuti?", "expected_keyword": "4 bulan", "source_kb": "engineering"},
-    {"question": "apa isi dokumen HR?", "expected_keyword": "dummy", "source_kb": "hr"}
+    {"question": "What does the HR dummy document contain?", "expected_keyword": "dummy", "source_kb": "hr"},
+    {"question": "When do employees receive their salary?", "expected_keyword": "25", "source_kb": "hr"}
 ]
 
 collection = get_chroma_collection()
