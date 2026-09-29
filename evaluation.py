@@ -3,7 +3,7 @@ from embeddings import get_chroma_collection
 from llm import ask_question
 
 test_cases = [
-    {"question": "berapa lama sebelum mengajukan cuti?", "expected_keyword": "4 bulan", "source_kb": "engineering"},
+    {"question": "How long before should employees submit a leave request?", "expected_keyword": "months", "source_kb": "engineering"},
     {"question": "What does the HR dummy document contain?", "expected_keyword": "dummy", "source_kb": "hr"},
     {"question": "When do employees receive their salary?", "expected_keyword": "25", "source_kb": "hr"}
 ]
@@ -17,6 +17,6 @@ for case in test_cases:
     print(repr(answer))
 
     if case["expected_keyword"] in answer:
-        print("lulus:", case["question"])
+        print("pas:", case["question"])
     else:
-        print("gagal:", case["question"], "-> jawaban:", answer)
+        print("fail:", case["question"], "-> answer:", answer)

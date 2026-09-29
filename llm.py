@@ -25,7 +25,7 @@ def ask_question(metadata, question):
     print(f"CONTEXT: {context}")
 
     prompt = [
-        {"role": "system", "content": "Jawab HANYA berdasarkan context dan menjawab singkat menggunakan Bahasa Indonesia."}
+        {"role": "system", "content": "Answer ONLY based on the context and keep it brief, using English."}
     ]
 
     prompt.append({
