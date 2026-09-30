@@ -16,5 +16,5 @@ def retrieve_chunks(collection, query, n_results=3, source_kb=None):
 if __name__ == "__main__":
     from embeddings import get_chroma_collection
     collection = get_chroma_collection()
-    documents, metadatas = retrieve_chunks(collection, "berapa lama sebelum mengajukan cuti ?", source_kb="hr")
+    documents, metadatas = retrieve_chunks(collection, "How long before should employees submit a leave request?", source_kb="engineering")
     print(documents, metadatas)

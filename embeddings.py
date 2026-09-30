@@ -20,6 +20,3 @@ def save_to_chroma(collection, chunks, source_name, file_name):
         ids=ids,
         metadatas=[{"source": source_name, "filename": file_name} for _ in chunks]
     )
-
-collection = get_chroma_collection()
-print(collection.get())
